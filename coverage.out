@@ -1,0 +1,12 @@
+mode: set
+todo-cli-go/todo/todo.go:15.22,17.2 1 1
+todo-cli-go/todo/todo.go:20.37,24.2 3 1
+todo-cli-go/todo/todo.go:27.38,28.28 1 1
+todo-cli-go/todo/todo.go:28.28,29.17 1 1
+todo-cli-go/todo/todo.go:29.17,32.4 2 1
+todo-cli-go/todo/todo.go:34.2,34.14 1 1
+todo-cli-go/todo/todo.go:38.36,39.28 1 1
+todo-cli-go/todo/todo.go:39.28,40.17 1 1
+todo-cli-go/todo/todo.go:40.17,43.4 2 1
+todo-cli-go/todo/todo.go:45.2,45.14 1 1
+todo-cli-go/todo/todo.go:49.31,53.2 3 1
