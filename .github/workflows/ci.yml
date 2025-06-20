@@ -26,12 +26,13 @@ jobs:
 
       - name: Install golangci-lint
         run: |
-          go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.63.0
-          # add the Go bin to the PATH so golangci-lint is available
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh \
+            | sh -s -- -b $(go env GOPATH)/bin v1.64.8
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
       - name: Run linter
         run: golangci-lint run
+
 
 
 
