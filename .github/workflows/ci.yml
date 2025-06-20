@@ -26,11 +26,17 @@ jobs:
 
       - name: Install golangci-lint
         run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.53.0
+          go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+          echo "GOPATH: $(go env GOPATH)"
+          echo "Adding GOPATH/bin to PATH"
+          echo "${{ runner.os }}"  # verify OS if needed
+        shell: bash
+
+      - name: Add golangci-lint to PATH
+        run: echo "${{ github.workspace }}/go/pkg/mod" && echo "PATH=$(go env GOPATH)/bin:$PATH" >> $GITHUB_ENV
 
       - name: Run linter
-        run: |
-          golangci-lint run --disable=depguard --timeout 5m
+        run: golangci-lint run
 
 
   build:

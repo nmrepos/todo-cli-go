@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"sync"
+    "fmt"
+    "log"
+    "net/http"
+    "sync"
 
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
 )
 
 type Todo struct {
@@ -36,7 +37,10 @@ func main() {
     r.GET("/", func(c *gin.Context) {
         c.File("./static/index.html")
     })
-	r.Run(":8080")
+
+	if err := r.Run(":8080"); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
+	}
 }
 
 func corsMiddleware(c *gin.Context) {
