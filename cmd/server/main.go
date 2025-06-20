@@ -29,7 +29,13 @@ func main() {
 	r.PUT("/todos/:id", updateTodo)
 	r.DELETE("/todos/:id", deleteTodo)
 
-	r.Static("/", "./static")
+	// serve all your JS/CSS/etc. under /static/*
+    r.Static("/static", "./static")
+
+    // when someone hits “/”, return your SPA’s index.html
+    r.GET("/", func(c *gin.Context) {
+        c.File("./static/index.html")
+    })
 	r.Run(":8080")
 }
 
