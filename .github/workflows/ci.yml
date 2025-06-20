@@ -26,17 +26,13 @@ jobs:
 
       - name: Install golangci-lint
         run: |
-          go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-          echo "GOPATH: $(go env GOPATH)"
-          echo "Adding GOPATH/bin to PATH"
-          echo "${{ runner.os }}"  # verify OS if needed
-        shell: bash
-
-      - name: Add golangci-lint to PATH
-        run: echo "${{ github.workspace }}/go/pkg/mod" && echo "PATH=$(go env GOPATH)/bin:$PATH" >> $GITHUB_ENV
+          go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.63.0
+          # add the Go bin to the PATH so golangci-lint is available
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
       - name: Run linter
         run: golangci-lint run
+
 
 
   build:
